@@ -20,9 +20,6 @@ Link : https://www.kaggle.com/c/m5-forecasting-accuracy/data
 
 ## DATA CLEANING AND PREPARATION 
 
-
-Here is a more professional and refined version of your points:
-
 1. Initial Data Subset: We will begin our analysis by working with a subset of the data, specifically focusing on March 2011. By starting with this fraction, we can refine our methodology before applying it to the rest of the months or the entire dataset. This approach will streamline our data cleaning and preparation process, making it more efficient and workable.
 
 2. Pivot Sales Columns: Convert the sales columns into a single column using the pivot_longer() function. This transformation will facilitate more straightforward analysis and manipulation of the sales data.
