@@ -37,12 +37,21 @@ SKUs: 1.557 Total in March 2011 - This represent 51% of the Total SKUs sold betw
 
 <img width="670" alt="ImageN°1(Units)" src="https://github.com/user-attachments/assets/eed4343a-517b-48e8-b9b8-5dab41723a9a">
 
+    - A Products: 35.5% of SKUs generate 80% of total sales in units. These are the fast-moving goods in Walmart stores.
+    
+    - B Products: 30.8% of SKUs generate 15% of total sales in units. These are the regular/medium-moving goods in Walmart stores.
+    
+    - C Products: 33.7% of SKUs generate 5% of total sales in units. These are the slow-moving goods in Walmart stores.
+
 ### SCOPE Analysis N°2: SKU ABC Classification in tearms of Sales in Revenue
 
 <img width="670" alt="ImageN°2(Revenue)" src="https://github.com/user-attachments/assets/4439c822-140f-40bc-a2eb-8bd20a3b3a46">
 
-
-
+    - A Revenue Products: 20% of SKUs that generate 80% of total sales in Revenue. 
+    
+    - B Revenue Products: 30% of SKUs that generate 15% of total sales in Revenue. 
+    
+    - C Revenue Products: 50% of SKUs that generate 5% of total sales in Revenue. 
 
 
 ## Insights and Recommendations
