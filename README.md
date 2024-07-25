@@ -47,11 +47,11 @@ SKUs: 1.557 Total in March 2011 - This represent 51% of the Total SKUs sold betw
 
 <img width="670" alt="ImageN°2(Revenue)" src="https://github.com/user-attachments/assets/4439c822-140f-40bc-a2eb-8bd20a3b3a46">
 
-    - A Revenue Products: 20% of SKUs that generate 80% of total sales in Revenue. 
+    - A Revenue Products: 43.7% of SKUs that generate 80% of total sales in Revenue. 
     
-    - B Revenue Products: 30% of SKUs that generate 15% of total sales in Revenue. 
+    - B Revenue Products: 28.1% of SKUs that generate 15% of total sales in Revenue. 
     
-    - C Revenue Products: 50% of SKUs that generate 5% of total sales in Revenue. 
+    - C Revenue Products: 28.2% of SKUs that generate 5% of total sales in Revenue. 
 
 
 ## Insights and Recommendations
