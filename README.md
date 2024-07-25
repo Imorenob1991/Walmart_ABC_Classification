@@ -30,6 +30,15 @@ Link : https://www.kaggle.com/c/m5-forecasting-accuracy/data
 
 ## DATA ANALYSIS AND INTERPRETATION
 
+SCOPE: All Stores (10) and SKUs, with no Filter nor Classifications.
+SKUs: 1.557 Total in March 2011 - This represent 51% of the Total SKUs sold between 2011-01-29 to 2016-06-19
+
+### SCOPE Analysis N°2: All the data with no classification. ABC Classification of Units_Sales by Item_id = SKU.
+
+
+
+
+
 
 
 
