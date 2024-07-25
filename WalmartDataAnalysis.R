@@ -12,9 +12,9 @@ library(ggplot2)
 
 sell_prices <- read_csv("sell_prices.csv")
 sales_train_validation <- read_csv("sales_train_validation.csv")
-sales_train_evaluation <- read_csv("sales_train_evaluation.csv")
+### sales_train_evaluation <- read_csv("sales_train_evaluation.csv")
 calendar<- read_csv("calendar.csv")
-sample_submission <- read_csv("sample_submission.csv")
+### sample_submission <- read_csv("sample_submission.csv")
 
 ## Original description of data-sets
 
@@ -22,18 +22,17 @@ sample_submission <- read_csv("sample_submission.csv")
 glimpse(calendar) # Key is "d" attribute
 
 ## sales_train_validation.csv - Contains the historical daily unit sales data per product and store [d_1 - d_1913]
-### It would be easier to work with the Unit Sales only one Columns (Now we have 1.913), but we will have a huge Data-set. Lets start with one month and then reply the query to the rest of the dataset.
+### It would be easier to work with the Unit Sales only one Columns (Now we have 1.913), but we will have a huge Data-set. Lets start with one month and then reply the query to the rest of the data-set.
 
 ## sample_submission.csv - The correct format for submissions. Reference the Evaluation tab for more info.
-### Is the format to generate the forecast, in this analysis will be omitted.
+### Is the format for the output of the initial assigment, in this analysis will be omitted.
 
 ## sell_prices.csv - Contains information about the price of the products sold per store and date.
 ### After wrangling the sales_train_validation, we can add this information of prices, to obtain revenue.
-### We can make ABC Curves with unit sales and revenue, and then compare the results.
-
 glimpse(sell_prices) # Key is a join of three columns (store_id + item_id + wm_yr_wk)
 
 ## sales_train_evaluation.csv - Includes sales [d_1 - d_1941] (labels used for the Public leader board)
+### In this case, we will work only with the database sales_train_validation.csv 
 
 ## 1. GENERAL UNDERSTANDING OF THE DATA
 
@@ -68,7 +67,7 @@ max(calendar$date)
 
 Calendar_March_2011 <- calendar %>% filter(date >= "2011-03-01" & date <="2011-03-31" )
 
-### Now we have to determine the D_Columns to filter
+### Now we have to determine the D_Columns that correspond to Marchh 2011
 
 Calendar_March_2011$d
   
@@ -110,6 +109,83 @@ sum(is.na(sales_train_validation_March_2011$Unit_Sales)) # No NA
 sum(is.na(sales_train_validation_March_2011$sell_price)) # No NA
 sum(is.na(sales_train_validation_March_2011$revenue)) # No NA
 
+## 3. DATA ANALYSIS AND INTERPRETATION
+
+### SCOPE Analysis N°1: All the data with no classification. ABC Classification of QUANTITY by Item_id = SKU.
+
+ABC_Classifiction_Units <- sales_train_validation_March_2011 %>%  group_by(item_id) %>% 
+  summarise(Total_Unit_Sales = sum(Unit_Sales, na.rm = TRUE)) %>%
+  mutate(Percentage_Unit_Sales = Total_Unit_Sales/sum(Total_Unit_Sales)*100) %>% 
+  arrange(desc(Total_Unit_Sales)) %>% 
+  mutate(Acum_Precentage_Unit_Sales = cumsum(Percentage_Unit_Sales)) %>% 
+  mutate(ABC_Classification = ifelse(Acum_Precentage_Unit_Sales <= 80, "A", 
+                                 ifelse(Acum_Precentage_Unit_Sales <= 95 , "B", "C")))
+
+Table_ABC_Classification_Units1 <- ABC_Classifiction_Units %>% group_by(ABC_Classification) %>% 
+  summarise(SKUs = n(),
+            Unit_Sale = sum(Total_Unit_Sales),
+            Percentage_Sales = sum(Percentage_Unit_Sales)) %>% 
+  mutate(Percentage_SKUs = SKUs/sum(SKUs)*100) %>% 
+  mutate(Cumulative_SKUs1 = cumsum(Percentage_SKUs),
+         Cumulative_Sales1 = cumsum(Percentage_Sales))
+
+zero_point <- data.frame(ABC_Classification = "", SKUs = 0, Unit_Sale = 0, Percentage_Sales = 0, Percentage_SKUs = 0, Cumulative_SKUs1 = 0, Cumulative_Sales1 = 0)
+
+Table_ABC_Classification_Units1 <- bind_rows(zero_point, Table_ABC_Classification_Units1)
+
+### Plotting ABC_Classification_Units_All_Stores_All_SKUs
+
+ggplot(Table_ABC_Classification_Units1, aes(x = Cumulative_SKUs1, y = Cumulative_Sales1, label = ABC_Classification)) +
+  geom_point(size = 3) +  # Scatter plot points
+  geom_text(vjust = -0.5, hjust = 0.8, color = "black", fontface = "bold") +
+  geom_smooth(method = "lm", formula = y ~ poly(x, 3), se = FALSE, color = "grey") +
+  labs(title = "ABC_Classification_Total_SKU_STORES_UNITS",
+       x = "Cumulative_SKU (%)",
+       y = "Cumulative_Sales (%)") +
+  scale_x_continuous(limits = c(0, 110), breaks = seq(0, 100, by = 10)) +  # Set x-axis limit and breaks
+  scale_y_continuous(limits = c(0, 110), breaks = seq(0, 100, by = 10)) +  # Set y-axis limit and breaks
+  theme_minimal() +
+  annotate("point", x = 0, y = 0, size = 3, color = "black") +  # Add (0,0) point
+  annotate("text", x = 0, y = 0, label = "(0,0)", vjust = -0.5, hjust = 0.5, color = "grey", fontface = "bold")  # Label for (0,0) point
+
+### SCOPE Analysis N°2: All the data with no classification. ABC Classification of SALES by Item_id = SKU.
+
+ABC_Classifiction_Sales1 <- sales_train_validation_March_2011 %>%  group_by(item_id) %>% 
+  summarise(Total_Revenue_Sales = sum(revenue, na.rm = TRUE)) %>%
+  mutate(Percentage_Revenue_Sales = Total_Revenue_Sales/sum(Total_Revenue_Sales)*100) %>% 
+  arrange(desc(Total_Revenue_Sales)) %>% 
+  mutate(Acum_Precentage_Revenue_Sales = cumsum(Percentage_Revenue_Sales)) %>% 
+  mutate(ABC_Classification = ifelse(Acum_Precentage_Revenue_Sales <= 80, "A", 
+                                     ifelse(Acum_Precentage_Revenue_Sales <= 95 , "B", "C")))
+
+Table_ABC_Classification_Revenue1 <- ABC_Classifiction_Sales1 %>% group_by(ABC_Classification) %>% 
+  summarise(SKUs = n(),
+            Revenue_Sale = sum(Total_Revenue_Sales),
+            Percentage_Sales = sum(Percentage_Revenue_Sales)) %>% 
+  mutate(Percentage_SKUs = SKUs/sum(SKUs)*100) %>% 
+  mutate(Cumulative_SKUs1 = cumsum(Percentage_SKUs),
+         Cumulative_Sales1 = cumsum(Percentage_Sales))
+
+colnames(Table_ABC_Classification_Revenue1)
+
+zero_point2 <- data.frame(ABC_Classification = "", SKUs = 0, Revenue_Sale = 0, Percentage_Sales = 0, Percentage_SKUs = 0, Cumulative_SKUs1 = 0, Cumulative_Sales1 = 0)
+
+Table_ABC_Classification_Revenue1 <- bind_rows(zero_point2, Table_ABC_Classification_Revenue1)
+
+### Plotting ABC_Classification_Revenue_All_Stores_All_SKUs
+
+ggplot(Table_ABC_Classification_Revenue1, aes(x = Cumulative_SKUs1, y = Cumulative_Sales1, label = ABC_Classification)) +
+  geom_point(size = 3) +  # Scatter plot points
+  geom_text(vjust = -0.5, hjust = 0.8, color = "black", fontface = "bold") +
+  geom_smooth(method = "lm", formula = y ~ poly(x, 3), se = FALSE, color = "grey") +
+  labs(title = "ABC_Classification_Total_SKU_STORES_REVENUE",
+       x = "Cumulative_SKU (%)",
+       y = "Cumulative_Sales (%)") +
+  scale_x_continuous(limits = c(0, 110), breaks = seq(0, 100, by = 10)) +  # Set x-axis limit and breaks
+  scale_y_continuous(limits = c(0, 110), breaks = seq(0, 100, by = 10)) +  # Set y-axis limit and breaks
+  theme_minimal() +
+  annotate("point", x = 0, y = 0, size = 3, color = "black") +  # Add (0,0) point
+  annotate("text", x = 0, y = 0, label = "(0,0)", vjust = -0.5, hjust = 0.5, color = "grey", fontface = "bold")  # Label for (0,0) point
 
 
 
