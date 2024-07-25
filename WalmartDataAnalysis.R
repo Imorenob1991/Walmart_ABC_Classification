@@ -150,6 +150,11 @@ ggplot(Table_ABC_Classification_Units1, aes(x = Cumulative_SKUs1, y = Cumulative
 
 ### SCOPE Analysis N°2: All the data with no classification. ABC Classification of SALES by Item_id = SKU.
 
+length(ABC_Classifiction_Sales1$item_id)
+
+length(ABC_Classifiction_Sales1$item_id)/SKUs_df
+
+
 ABC_Classifiction_Sales1 <- sales_train_validation_March_2011 %>%  group_by(item_id) %>% 
   summarise(Total_Revenue_Sales = sum(revenue, na.rm = TRUE)) %>%
   mutate(Percentage_Revenue_Sales = Total_Revenue_Sales/sum(Total_Revenue_Sales)*100) %>% 
@@ -186,6 +191,10 @@ ggplot(Table_ABC_Classification_Revenue1, aes(x = Cumulative_SKUs1, y = Cumulati
   theme_minimal() +
   annotate("point", x = 0, y = 0, size = 3, color = "black") +  # Add (0,0) point
   annotate("text", x = 0, y = 0, label = "(0,0)", vjust = -0.5, hjust = 0.5, color = "grey", fontface = "bold")  # Label for (0,0) point
+
+
+
+
 
 
 
