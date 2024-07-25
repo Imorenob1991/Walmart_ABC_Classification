@@ -33,9 +33,14 @@ Link : https://www.kaggle.com/c/m5-forecasting-accuracy/data
 SCOPE: All Stores (10) and SKUs, with no Filter nor Classifications.
 SKUs: 1.557 Total in March 2011 - This represent 51% of the Total SKUs sold between 2011-01-29 to 2016-06-19
 
-### SCOPE Analysis N°1: ABC Classification in tearms of Sales in Units
+### SCOPE Analysis N°1: SKU ABC Classification in tearms of Sales in Units
 
 <img width="670" alt="ImageN°1(Units)" src="https://github.com/user-attachments/assets/eed4343a-517b-48e8-b9b8-5dab41723a9a">
+
+### SCOPE Analysis N°2: SKU ABC Classification in tearms of Sales in Revenue
+
+<img width="670" alt="ImageN°2(Revenue)" src="https://github.com/user-attachments/assets/4439c822-140f-40bc-a2eb-8bd20a3b3a46">
+
 
 
 
