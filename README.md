@@ -35,6 +35,7 @@ SKUs: 1.557 Total in March 2011 - This represent 51% of the Total SKUs sold betw
 
 ### SCOPE Analysis N°2: All the data with no classification. ABC Classification of Units_Sales by Item_id = SKU.
 
+<img width="649" alt="ImageN°1(Units)" src="https://github.com/user-attachments/assets/bb8eb5c3-2710-4c6c-b127-71e8d882afa6">
 
 
 
