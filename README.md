@@ -33,10 +33,26 @@ Link : https://www.kaggle.com/c/m5-forecasting-accuracy/data
 SCOPE: All Stores (10) and SKUs, with no Filter nor Classifications.
 SKUs: 1.557 Total in March 2011 - This represent 51% of the Total SKUs sold between 2011-01-29 to 2016-06-19
 
-### SCOPE Analysis N°2: All the data with no classification. ABC Classification of Units_Sales by Item_id = SKU.
+### SCOPE Analysis N°1: ABC Classification in tearms of Sales in Units
 
-<img width="649" alt="ImageN°1(Units)" src="https://github.com/user-attachments/assets/bb8eb5c3-2710-4c6c-b127-71e8d882afa6">
+<img width="670" alt="ImageN°1(Units)" src="https://github.com/user-attachments/assets/eed4343a-517b-48e8-b9b8-5dab41723a9a">
 
+
+
+
+## Insights and Recommendations
+
+1. Fast-Moving Goods: These products should be strategically placed on the middle shelves, which are the second most visible zones in the supermarket gondola. This placement ensures high visibility and accessibility for items that have a high turnover rate.
+
+2. Type A Products: The distinction between Type A products in terms of units sold and revenue generated is notable. Higher-priced items, even if they move slower, can contribute significantly to revenue. Therefore, it is recommended to position high-revenue items on the top shelves, which are at eye level, to maximize their visibility and appeal.
+
+3. Low Revenue SKUs: SKUs that account for only 28.2% of total revenue should be placed on the bottom shelves. These items, which contribute less to overall revenue and are less frequently purchased, benefit from being in a zone that is less accessible and visible.
+
+## Next Steps:
+
+  - Correlation Analysis: Investigate if there is a correlation between the shelf position of an item and its classification. This could provide valuable insights into how shelf placement impacts product performance and sales. Further data analysis will be needed to answer this question comprehensively.
+
+  - Strategic Placement: If a correlation is found between shelf position and sales in units, it is advisable to place high-margin SKUs on the top shelves. Best-sellers, in terms of both units and revenue, should be positioned on the middle shelves to leverage their high turnover and ensure they remain easily accessible to customers.
 
 
 
