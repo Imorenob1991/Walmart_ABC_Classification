@@ -1,4 +1,3 @@
-
 # Walmart Sales Goods Data Analysis
 
 ## First Step is to activate all the packages that we will need to use
@@ -109,6 +108,8 @@ sum(is.na(sales_train_validation_March_2011$Unit_Sales)) # No NA
 sum(is.na(sales_train_validation_March_2011$sell_price)) # No NA
 sum(is.na(sales_train_validation_March_2011$revenue)) # No NA
 
+write_csv(sales_train_validation_March_2011,"March_2011_Data_Frame.csv")
+
 ## 3. DATA ANALYSIS AND INTERPRETATION
 
 ### SCOPE Analysis N°1: All the data with no classification. ABC Classification of QUANTITY by Item_id = SKU.
@@ -191,6 +192,8 @@ ggplot(Table_ABC_Classification_Revenue1, aes(x = Cumulative_SKUs1, y = Cumulati
   theme_minimal() +
   annotate("point", x = 0, y = 0, size = 3, color = "black") +  # Add (0,0) point
   annotate("text", x = 0, y = 0, label = "(0,0)", vjust = -0.5, hjust = 0.5, color = "grey", fontface = "bold")  # Label for (0,0) point
+
+
 
 
 
