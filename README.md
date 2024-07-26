@@ -1,5 +1,5 @@
 # Walmart_ABC_Classification
-This project involves performing an ABC classification on a dataset that containing 1,913 days of historical sales from 10 Walmart stores in three different states of United States. The objective is to classify the SKUs based on their contribution to sales in unit and revenue. Finally, get powerful insights from the analysis and identiyng further next steps. Lets Rock!
+This project involves performing an ABC classification on a dataset that containing 1,913 days of historical sales from 10 Walmart stores in three different states of United States. The objective is to classify the SKUs based on their contribution to sales in unit and revenue. Finally, get powerful insights from the analysis and identifying further next steps. Lets Rock!
 
 ## Data Source
 
