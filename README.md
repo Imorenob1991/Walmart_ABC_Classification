@@ -30,17 +30,17 @@ Link : https://www.kaggle.com/c/m5-forecasting-accuracy/data
 
 ## DATA ANALYSIS AND INTERPRETATION
 
-Scope:
- States: 3
- Stores: 10
- Caregories: 3
- Departments: 7
- SKUs: 1.557
- Date Range (%Y-%m-%d): Between "2011-03-01" to "2011-03-31"
+### Scope:
+States: 3
+Stores: 10
+Categories: 3
+Departments: 7
+SKUs: 1.557
+Date Range (%Y-%m-%d): Between "2011-03-01" to "2011-03-31"
 
 SKUs: There were a total of 1,557 SKUs in March 2011, representing 51% of the total SKUs sold between January 29, 2011, and June 19, 2016
 
-### SCOPE Analysis N°1: SKU ABC Classification in tearms of Sales in Units
+### Analysis N°1: SKU ABC Classification in tearms of Sales in Units
 
 <img width="670" alt="ImageN°1(Units)" src="https://github.com/user-attachments/assets/eed4343a-517b-48e8-b9b8-5dab41723a9a">
 
@@ -50,7 +50,7 @@ SKUs: There were a total of 1,557 SKUs in March 2011, representing 51% of the to
     
     - C Products: 33.7% of SKUs generate 5% of total sales in units. These are the slow-moving goods in Walmart stores.
 
-### SCOPE Analysis N°2: SKU ABC Classification in tearms of Sales in Revenue
+### Analysis N°2: SKU ABC Classification in tearms of Sales in Revenue
 
 <img width="670" alt="ImageN°2(Revenue)" src="https://github.com/user-attachments/assets/4439c822-140f-40bc-a2eb-8bd20a3b3a46">
 
@@ -65,9 +65,15 @@ SKUs: There were a total of 1,557 SKUs in March 2011, representing 51% of the to
 
 1. Fast-Moving Goods: These products should be strategically placed on the middle shelves, which are the second most visible zones in the supermarket gondola. This placement ensures high visibility and accessibility for items that have a high turnover rate.
 
-2. Type A Products: The distinction between Type A products in terms of units sold and revenue generated is notable. Higher-priced items, even if they move slower, can contribute significantly to revenue. Therefore, it is recommended to position high-revenue items on the top shelves, which are at eye level, to maximize their visibility and appeal.
+2. Type A Products: The distinction between Type A products in terms of units sold and revenue generated is notable. Higher-priced items, even if they slow or medium moving, can contribute significantly to revenue. Therefore, it is recommended to position high-revenue items on the top shelves, which are at eye level, to maximize their visibility and appeal.
 
-3. Low Revenue SKUs: SKUs that account for only 28.2% of total revenue should be placed on the bottom shelves. These items, which contribute less to overall revenue and are less frequently purchased, benefit from being in a zone that is less accessible and visible.
+3. C Revenue Procuts: 28.2% of SKUs that are C Revenue Products contrubute only to 5% of total Sales. These items should be placed on the bottom shelves unless, that are items with high margin percentages (50% or more).
+
+Recomendation: 
+1. Top Shelves: A Fast Moving Products and C Products with high Margin and Revenue Contribution.
+2. Middle Shelves: A/B/C Products with high Margin and Revenue Contribution.
+3. Low Shelves: C/B Slow and medium moving goods, with low Margin and Revenue Contribution
+
 
 ## Next Steps:
 
